@@ -33,4 +33,10 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService{
 
     }
 
+    override fun deleteUser(id: Long) {
+        val user =userRepository.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "User not found") }
+        userRepository.deleteById(id)
+    }
+
+
 }

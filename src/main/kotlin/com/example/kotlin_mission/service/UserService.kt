@@ -8,4 +8,5 @@ interface UserService{
     fun getUser(id : Long): UserResponse
     fun getAll(): List<UserResponse>
     fun updateUser(id: Long, request: UserRequest): UserResponse
+    fun deleteUser(id : Long)
 }
