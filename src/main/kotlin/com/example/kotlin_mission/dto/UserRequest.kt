@@ -1,0 +1,1 @@
+data class UserRequest(val name : String)
