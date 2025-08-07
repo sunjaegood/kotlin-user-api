@@ -17,7 +17,7 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService{
     }
 
     override fun getUser(id: Long): UserResponse {
-        val user = userRepository.findById(id).orElseThrow{ ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")}
+        val user=validateUser(id)
         return UserResponse(user.id, user.name)
     }
 
@@ -26,17 +26,18 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService{
     }
 
     override fun updateUser(id: Long, request: UserRequest): UserResponse {
-        val user =userRepository.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "User not found") }
-
+        val user=validateUser(id)
         user.name = request.name
         return UserResponse(user.id, user.name)
 
     }
 
     override fun deleteUser(id: Long) {
-        val user =userRepository.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "User not found") }
+        val user=validateUser(id)
         userRepository.deleteById(id)
     }
 
-
+    fun validateUser(id : Long):User{
+        return userRepository.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "User not found") }
+    }
 }
