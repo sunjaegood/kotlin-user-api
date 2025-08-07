@@ -25,4 +25,12 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService{
         return userRepository.findAll().map { UserResponse(it.id, it.name) }
     }
 
+    override fun updateUser(id: Long, request: UserRequest): UserResponse {
+        val user =userRepository.findById(id).orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "User not found") }
+
+        user.name = request.name
+        return UserResponse(user.id, user.name)
+
+    }
+
 }

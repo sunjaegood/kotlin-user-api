@@ -7,4 +7,5 @@ interface UserService{
     fun createUser(request : UserRequest): Long
     fun getUser(id : Long): UserResponse
     fun getAll(): List<UserResponse>
+    fun updateUser(id: Long, request: UserRequest): UserResponse
 }
