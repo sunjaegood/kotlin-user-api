@@ -21,4 +21,8 @@ class UserServiceImpl(private val userRepository: UserRepository) : UserService{
         return UserResponse(user.id, user.name)
     }
 
+    override fun getAll(): List<UserResponse> {
+        return userRepository.findAll().map { UserResponse(it.id, it.name) }
+    }
+
 }
