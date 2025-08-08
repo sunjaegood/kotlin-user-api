@@ -25,4 +25,9 @@ class UserContrlloer(private val userService: UserService) {
     fun getAll(): List<UserResponse> {
         return userService.getAll()
     }
+
+    @PutMapping("/{id}")
+    fun updateUser(@PathVariable id: Long, @RequestBody request: UserRequest): UserResponse {
+        return userService.updateUser(id, request)
+    }
 }
