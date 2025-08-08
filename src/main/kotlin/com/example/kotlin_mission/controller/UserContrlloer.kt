@@ -4,6 +4,7 @@ import UserRequest
 import com.example.kotlin_mission.dto.UserResponse
 import com.example.kotlin_mission.service.UserService
 import org.springframework.http.HttpStatus
+
 import org.springframework.web.bind.annotation.*
 
 
@@ -12,27 +13,18 @@ import org.springframework.web.bind.annotation.*
 class UserContrlloer(private val userService: UserService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createUser(@RequestBody request: UserRequest): Long {
-        return userService.createUser(request)
-    }
+    fun createUser(@RequestBody request: UserRequest): Long = userService.createUser(request)
 
     @GetMapping("/{id}")
-    fun getUser(@PathVariable id: Long): UserResponse {
-        return userService.getUser(id)
-    }
+    fun getUser(@PathVariable id: Long): UserResponse = userService.getUser(id)
 
     @GetMapping
-    fun getAll(): List<UserResponse> {
-        return userService.getAll()
-    }
+    fun getAll(): List<UserResponse> = userService.getAll()
 
     @PutMapping("/{id}")
-    fun updateUser(@PathVariable id: Long, @RequestBody request: UserRequest): UserResponse {
-        return userService.updateUser(id, request)
-    }
+    fun updateUser(@PathVariable id: Long, @RequestBody request: UserRequest): UserResponse = userService.updateUser(id, request)
     
     @DeleteMapping("/{id}")
-    fun deleteUser(@PathVariable id: Long) {
-        return userService.deleteUser(id)
-    }
+    fun deleteUser(@PathVariable id: Long) = userService.deleteUser(id)
+
 }
