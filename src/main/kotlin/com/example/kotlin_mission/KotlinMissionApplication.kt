@@ -9,3 +9,4 @@ class KotlinMissionApplication
 fun main(args: Array<String>) {
 	runApplication<KotlinMissionApplication>(*args)
 }
+
