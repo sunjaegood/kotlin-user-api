@@ -21,4 +21,8 @@ class UserContrlloer(private val userService: UserService) {
         return userService.getUser(id)
     }
 
+    @GetMapping
+    fun getAll(): List<UserResponse> {
+        return userService.getAll()
+    }
 }
