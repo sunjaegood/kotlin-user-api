@@ -30,4 +30,9 @@ class UserContrlloer(private val userService: UserService) {
     fun updateUser(@PathVariable id: Long, @RequestBody request: UserRequest): UserResponse {
         return userService.updateUser(id, request)
     }
+    
+    @DeleteMapping("/{id}")
+    fun deleteUser(@PathVariable id: Long) {
+        return userService.deleteUser(id)
+    }
 }
